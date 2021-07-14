@@ -1,0 +1,16 @@
+.danger {
+  color: red;
+}
+
+form{
+  margin: auto;
+  margin-top: 200px;
+  width: 500px;
+  button, mat-form-field{
+    margin-top: 20px;
+    width: 100%;
+  }
+  #password{
+    margin-bottom: 40px;
+  }
+}

@@ -1,44 +1,115 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <input matInput type="text" id="name" formControlName="name" placeholder="Name">
-    <mat-error *ngIf="myForm.controls.name.errors?.required && myForm.controls.name.dirty">
-      Please enter a valid name
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" id="decimals" formControlName="decimals" placeholder="Decimals">
-    <mat-hint>A number from 0 to 18</mat-hint>
-    <mat-error *ngIf="myForm.controls.decimals.errors?.tooLarge && myForm.controls.decimals.dirty">
-      Wow. This is too much!
-    </mat-error>
-    <mat-error *ngIf="myForm.controls.decimals.errors?.tooSmall && myForm.controls.decimals.dirty">
-      Come on. This is too small!
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field id="password">
-    <input matInput [type]="passwordFieldType" formControlName="password" placeholder="Password">
-    <mat-hint>A very secure password</mat-hint>
-    <mat-error *ngIf="myForm.controls.password.errors?.noSpecial && myForm.controls.password.dirty">
-      A special character must be included
-    </mat-error>
-    <mat-error *ngIf="myForm.controls.password.errors?.noLowerChar && myForm.controls.password.dirty">
-      At least one lowerchase character must be included
-    </mat-error>
-    <mat-error *ngIf="myForm.controls.password.errors?.noUpperChar && myForm.controls.password.dirty">
-      At least one uppercase character must be included
-    </mat-error>
-    <mat-error *ngIf="myForm.controls.password.errors?.noDigit && myForm.controls.password.dirty">
-      A digit must be included
-    </mat-error>
-    <mat-error *ngIf="myForm.controls.password.errors?.tooShort && myForm.controls.password.dirty">
-      Password must contain at least {{passwordMinLength}} characters
-    </mat-error>
-  </mat-form-field>
-  <div>
-    <button mat-raised-button color="primary" type="submit" [disabled]="this.myForm.invalid">Submit</button>
-  </div>
-
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Create new account </mat-card-title>
+      <mat-card-subtitle> Meet a mongo today! </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Name"
+        />
+        <mat-error
+          *ngIf="
+            myForm.controls.name.errors?.required && myForm.controls.name.dirty
+          "
+        >
+          Please enter a valid name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          id="decimals"
+          formControlName="decimals"
+          placeholder="Decimals"
+        />
+        <mat-hint>A number from 0 to 18</mat-hint>
+        <mat-error
+          *ngIf="
+            myForm.controls.decimals.errors?.tooLarge &&
+            myForm.controls.decimals.dirty
+          "
+        >
+          Wow. This is too much!
+        </mat-error>
+        <mat-error
+          *ngIf="
+            myForm.controls.decimals.errors?.tooSmall &&
+            myForm.controls.decimals.dirty
+          "
+        >
+          Come on. This is too small!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field id="password">
+        <input
+          matInput
+          [type]="passwordFieldType"
+          formControlName="password"
+          placeholder="Password"
+        />
+        <mat-hint>A very secure password</mat-hint>
+        <mat-error
+          *ngIf="
+            myForm.controls.password.errors?.noSpecial &&
+            myForm.controls.password.dirty
+          "
+        >
+          A special character must be included
+        </mat-error>
+        <mat-error
+          *ngIf="
+            myForm.controls.password.errors?.noLowerChar &&
+            myForm.controls.password.dirty
+          "
+        >
+          At least one lowerchase character must be included
+        </mat-error>
+        <mat-error
+          *ngIf="
+            myForm.controls.password.errors?.noUpperChar &&
+            myForm.controls.password.dirty
+          "
+        >
+          At least one uppercase character must be included
+        </mat-error>
+        <mat-error
+          *ngIf="
+            myForm.controls.password.errors?.noDigit &&
+            myForm.controls.password.dirty
+          "
+        >
+          A digit must be included
+        </mat-error>
+        <mat-error
+          *ngIf="
+            myForm.controls.password.errors?.tooShort &&
+            myForm.controls.password.dirty
+          "
+        >
+          Password must contain at least {{ passwordMinLength }} characters
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="this.myForm.invalid"
+      >
+        Regiser
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </form>
-<button mat-button color="secondary" (click)="toggleShowPassword()">Show</button>
-
-{{myForm.valueChanges|async|json}}
+<button mat-button color="secondary" (click)="toggleShowPassword()">
+  Show
+</button>
+{{ myForm.valueChanges | async | json }}
